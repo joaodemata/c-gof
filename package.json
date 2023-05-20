@@ -1,0 +1,46 @@
+{
+  "name": "c-gof",
+  "version": "1.0.0",
+  "description": "Core para el juego de la vida",
+  "main": "c-gof",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --trace-warnings --use_strict c-gof.js",
+    "start": "pm2 delete c-gof.js; pm2 start c-gof.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/joaodemata/c-gof.git"
+  },
+  "keywords": [
+    "game",
+    "mongodb",
+    "socket"
+  ],
+  "author": "joaodemata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaodemata/c-gof/issues"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "biguint-format": "^1.0.2",
+    "busboy": "^1.6.0",
+    "chalk": "^4.1.1",
+    "cors": "^2.8.5",
+    "cron": "^2.0.0",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.15",
+    "express-validator": "^6.11.1",
+    "form-data": "^4.0.0",
+    "i18n": "^0.15.1",
+    "mongoose": "^6.6.1",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "dotenv": "^16.0.3"
+  }
+}
