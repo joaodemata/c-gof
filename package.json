@@ -1,6 +1,6 @@
 {
   "name": "c-gof",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Core para el juego de la vida",
   "main": "c-gof",
   "scripts": {
