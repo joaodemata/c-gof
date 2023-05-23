@@ -24,7 +24,8 @@ try {
   process.env.JM_APIKEY = process.env.JM_CGOF_APIKEY;
 
   // Iniciamos nuestra APP
-  const App = require('./app');
+  const { server } = require('./app');
+
   const LogUtilClass = require('./common/utils/log.util_class');
   const { CMM_SERVER } = require('./common/configs');
 
@@ -34,6 +35,10 @@ try {
   CMM_SERVER.DatabaseMongo()
     .then(() => {
       new LogUtilClass('Connect MongoDB').info(`Database Connected, User: ${process.env.JM_MDB_USER} and Database: ${process.env.JM_MDB_NAME}`);
+
+      server.listen(process.env.JM_CGOF_PORT, undefined, undefined, () => {
+        new LogUtilClass('Connected Server').info(`port: ${process.env.JM_CGOF_PORT}`);
+      });
     })
     .catch((_error) => {
       console.log({ _error });
