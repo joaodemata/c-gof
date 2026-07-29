@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 try {
-  require('dotenv').config();
+  require("dotenv").config();
   // Setear las variables de entorno para usar en el Core.
   // Info Del Core
   process.env.JM_IS_CORE = true;
@@ -24,26 +24,29 @@ try {
   process.env.JM_APIKEY = process.env.JM_CGOF_APIKEY;
 
   // Iniciamos nuestra APP
-  const { server } = require('./app');
+  const { server } = require("./app");
 
-  const LogUtilClass = require('./common/utils/log.util_class');
-  const { CMM_SERVER } = require('./common/configs');
+  const { CMM_SERVER } = require("./common/configs");
 
   // Variable de Entorno para Comprobar si esta tomand el ENV del Servidor
-  new LogUtilClass('AMBIENTE').info(`Runing in ${process.env.JM_NODE_ENV}`);
+  console.info(`AMBIENTE Runing in ${process.env.JM_NODE_ENV}`);
 
   CMM_SERVER.DatabaseMongo()
     .then(() => {
-      new LogUtilClass('Connect MongoDB').info(`Database Connected, User: ${process.env.JM_MDB_USER} and Database: ${process.env.JM_MDB_NAME}`);
+      console.log(
+        `Connect MongoDB Database Connected, User: ${process.env.JM_MDB_USER} and Database: ${process.env.JM_MDB_NAME}`,
+      );
 
       server.listen(process.env.JM_CGOF_PORT, undefined, undefined, () => {
-        new LogUtilClass('Connected Server').info(`port: ${process.env.JM_CGOF_PORT}`);
+        console.log(`Connected Server port: ${process.env.JM_CGOF_PORT}`);
       });
     })
     .catch((_error) => {
       console.log({ _error });
-      new LogUtilClass('CATCH Failed to Connect mongoDB').error(_error);
+      console.error(
+        `CATCH Failed to Connect mongoDB ${JSON.stringify(_error)}`,
+      );
     });
 } catch (_error) {
-  console.error('Error trycatch index', _error);
+  console.error("Error trycatch index", _error);
 }
