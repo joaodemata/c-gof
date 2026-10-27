@@ -1,21 +1,16 @@
-"use strict";
+'use strict';
 
-const Mongoose = require("mongoose");
+const Mongoose = require('mongoose');
 
 /**
- * Variables de configuración del Servidor.
- * - Conexión a Base de Datos.
- * - Traduccion
+ * Configuración del servidor.
  */
-
 module.exports = {
   /**
-   * Conexión al motor de Base de Datos MongoDB.
+   * Conexión a MongoDB.
+   * @return {Promise<Mongoose>}
    */
-
-  DatabaseMongo: async () => {
-    Mongoose.connect(
-      `mongodb://${process.env.JM_MDB_HOST}:${process.env.JM_MDB_PORT}`,
-    );
+  DatabaseMongo: () => {
+    return Mongoose.connect(`mongodb://${process.env.JM_MDB_HOST}:${process.env.JM_MDB_PORT}/${process.env.JM_MDB_NAME}`);
   },
 };
