@@ -13,7 +13,7 @@ const ConwayGameModel = new Schema(
     x_y: {
       type: Schema.Types.String,
       required: true,
-      description: 'posición abosuluta del punto',
+      description: 'posición absoluta ("x,y") de la célula',
     },
     x: {
       type: Schema.Types.Number,
@@ -28,49 +28,49 @@ const ConwayGameModel = new Schema(
     is_alive: {
       type: Schema.Types.Boolean,
       required: true,
-      description: 'indica si la célula esta viva',
+      description: 'indica si la célula está viva',
     },
     around_points: [
       {
         type: Schema.Types.String,
         required: true,
-        description: 'posición abosuluta del punto',
+        description: 'posición absoluta ("x,y") de una célula vecina',
       },
     ],
-    // Comunes
+    // Campos comunes de auditoría
     last_updated_at: {
       type: Schema.Types.Date,
-      description: 'Ultima Actualizacion',
+      description: 'Última actualización',
       required: true,
       default: () => new Date(),
     },
     created_date: {
       type: Schema.Types.Date,
-      description: 'Fecha de Creacion',
+      description: 'Fecha de creación',
       required: true,
       default: () => new Date(),
     },
     logical_delete: {
       type: Schema.Types.Boolean,
       required: true,
-      description: 'Borrado Logico',
+      description: 'Borrado lógico',
       default: false,
     },
     core_db: {
       type: Schema.Types.String,
-      description: 'Nombre del Core de Base de datos que hizo el registro',
-      default: process.env.CC_CORE_NAME,
+      description: 'Nombre del Core que hizo el registro',
+      default: process.env.JM_CORE_NAME,
       required: false,
     },
     user_db: {
       type: Schema.Types.String,
-      description: 'Usuario de Base de datos que hizo el registro',
-      default: process.env.CC_MDB_USER,
+      description: 'Usuario de base de datos que hizo el registro',
+      default: process.env.JM_MDB_USER,
       required: false,
     },
     schema_db: {
       type: Schema.Types.String,
-      description: 'Versionado de la Base de datos.',
+      description: 'Versión del esquema',
       default: '1.0.0',
       required: false,
     },
